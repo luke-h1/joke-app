@@ -4,7 +4,8 @@ const API_URL =
 // variables
 const output = document.querySelector('#output');
 const loadingElement = document.querySelector('.loading');
-const button = document.querySelector('.btn'); 
+const button = document.querySelector('.btn');
+const displayToUser = document.querySelector('.output-joke');
 
 // set loading element to not display
 loadingElement.style.display = 'none';
@@ -17,9 +18,8 @@ async function getData() {
         .then((res) => {
             loadingElement.style.display = 'none';
             console.log(res);
-            
+            displayToUser.innerHTML = res.joke || res.delivery;
         });
 }
 
-
-button.addEventListener('click', getData); 
+button.addEventListener('click', getData);
