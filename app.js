@@ -17,12 +17,7 @@ async function getData() {
         .then((res) => res.json())
         .then((res) => {
             loadingElement.style.display = 'none';
-            console.log(res);
-            if (res.setup == undefined) {
-                displayToUser.innerHTML = res.joke || res.delivery;
-            } else {
-                displayToUser.innerHTML = res.setup + res.joke;
-            }
+            displayToUser.innerHTML = res.joke;
         });
 }
 
