@@ -11,17 +11,19 @@ const displayToUser = document.querySelector('.output-joke');
 loadingElement.style.display = 'none';
 
 // async function and await response from API
-async function getData(){
-    loadingElement.style.display = ''; 
-    await fetch(API_URL) 
-    .then((res) => res.json())
-    .then((res) => { 
-        loadingElement.style.display = 'none'; 
-        console.log(res); 
-        displayToUser.innerHTML =  res.setup + res.joke || res.delivery; 
-    }); 
-
-
+async function getData() {
+    loadingElement.style.display = '';
+    await fetch(API_URL)
+        .then((res) => res.json())
+        .then((res) => {
+            loadingElement.style.display = 'none';
+            console.log(res);
+            if (res.setup == undefined) {
+                displayToUser.innerHTML = res.joke || res.delivery;
+            } else {
+                displayToUser.innerHTML = res.setup + res.joke;
+            }
+        });
 }
 
 button.addEventListener('click', getData);
