@@ -18,7 +18,7 @@ async function getData(){
     .then((res) => { 
         loadingElement.style.display = 'none'; 
         console.log(res); 
-        displayToUser.innerHTML =  res.joke || res.delivery; 
+        displayToUser.innerHTML =  res.setup + res.joke || res.delivery; 
     }); 
 
 
