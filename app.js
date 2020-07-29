@@ -13,13 +13,15 @@ loadingElement.style.display = 'none';
 // async function and await response from API
 async function getData() {
     loadingElement.style.display = '';
-    await fetch(API_URL)
-        .then((res) => res.json())
-        .then((res) => {
-            loadingElement.style.display = 'none';
-            console.log(res);
-            displayToUser.innerHTML = res.joke || res.delivery;
-        });
+        await fetch(API_URL)
+            .then((res) => res.json())
+            .then((res) => {
+                loadingElement.style.display = 'none';
+                console.log(res);
+                displayToUser.innerHTML = res.joke || res.delivery;
+            }),
+        
+    
 }
 
 button.addEventListener('click', getData);
